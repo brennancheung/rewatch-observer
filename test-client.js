@@ -27,7 +27,7 @@ async function sendLog() {
   }
 
   try {
-    const response = await fetch('http://localhost:3000/api/logs', {
+    const response = await fetch('http://localhost:4000/api/logs', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ function startSending() {
 }
 
 console.log('Starting test client...')
-console.log('Sending logs to http://localhost:3000/api/logs')
+console.log('Sending logs to http://localhost:4000/api/logs')
 console.log('Press Ctrl+C to stop')
 
 startSending()

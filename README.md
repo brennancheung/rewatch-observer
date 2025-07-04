@@ -2,6 +2,8 @@
 
 A real-time observability platform for monitoring log streams from multiple services. Built with Next.js 15, TypeScript, and Server-Sent Events for live log streaming.
 
+![Rewatch Observer Screenshot](./docs/images/rewatch-observer.png)
+
 ## Features
 
 - **Real-time Log Streaming**: Live updates via Server-Sent Events (SSE)
@@ -26,7 +28,7 @@ pnpm dev
 node test-client.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the web interface.
+Open [http://localhost:4000](http://localhost:4000) to view the web interface.
 
 ## API Documentation
 
@@ -48,7 +50,7 @@ Submit log events to the observer.
 **Example Request:**
 
 ```bash
-curl -X POST http://localhost:3000/api/logs \
+curl -X POST http://localhost:4000/api/logs \
   -H "Content-Type: application/json" \
   -d '{
     "source": "api-server",
@@ -88,10 +90,10 @@ Retrieve stored logs.
 
 ```bash
 # Get all logs
-curl http://localhost:3000/api/logs
+curl http://localhost:4000/api/logs
 
 # Get last 100 logs
-curl http://localhost:3000/api/logs?count=100
+curl http://localhost:4000/api/logs?count=100
 ```
 
 ### GET /api/stream
@@ -171,7 +173,7 @@ The platform includes several configuration options:
 
 ```javascript
 async function sendLog(message, level = 'info') {
-  await fetch('http://localhost:3000/api/logs', {
+  await fetch('http://localhost:4000/api/logs', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -195,7 +197,7 @@ import json
 
 def send_log(message, level='info', metadata=None):
     response = requests.post(
-        'http://localhost:3000/api/logs',
+        'http://localhost:4000/api/logs',
         headers={'Content-Type': 'application/json'},
         data=json.dumps({
             'source': 'python-service',
